@@ -13,30 +13,31 @@ def add_when_not_same_length(a, b)
     result = [] 
     # insure a is greater than or equal to b
     if a.length < b.length then
-        #puts "ERROR: first arg must be longer than second arg"
+        puts "ERROR: first arg must be longer than second arg"
         return result
     end
         
     # insure a is not equal to b
     if a.length == b.length then
-        #puts "ERROR: arguments must not be equal length"
+        puts "ERROR: arguments must not be equal length"
         return result
     end
     
     # input is good length sum the linked lists
     # TODO: add error handling for array elements which are non-numeric    
     # move shortest array from back if not equal
-    #puts "a length #{a.length} b length #{b.length}"
+    puts "a length #{a.length} b length #{b.length}"
+    difference = a.length - b.length
     
     (b.length-1).downto(0) do |i|
-        #puts "loop #{i} - adding #{a[i+1]} + #{b[i]} => #{a[i+1] + b[i]}"
+        puts "loop #{i} - adding a[#{i+difference}] + b[#{i}] => #{a[i+difference]} + #{b[i]} => #{a[i+difference] + b[i]}"
     
-        result.push(a[i+1] + b[i])
+        result.push(a[i+difference] + b[i])
     end
     
     # copy remainder of longer array
     0.upto(a.length - b.length - 1) do |j|
-        #puts "loop #{j} moving #{a[j]}"
+        puts "loop #{j} moving #{a[j]}"
         result.push(a[j])
     end
     
