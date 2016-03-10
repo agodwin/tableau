@@ -18,3 +18,5 @@ programming example for Tableau interview
     $ ruby sum.rb "[1, 1, 1]" "[2, 2, 3, 3, 3]"
     given [1, 1, 1] and [2, 2, 3, 3, 3] the sum is: 
     [2, 2, 3, 4, 4]
+    
+    == LOOKS LIKE I HAVE A BUG - OH HAPPY DAY ==
