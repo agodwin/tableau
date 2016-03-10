@@ -1,3 +1,5 @@
+#! /usr/bin/env ruby
+
 =begin
 Consider representing an integer as singly linked list of it's digits. So the integer 157 would be represented as the list [1]->[5]->[7].
 Create a function that adds two integers represented as lists, and returns the result in a list.
@@ -69,8 +71,14 @@ end
 #a = [1, 1, 1]
 #b = [2, 2, 2, 2]
 
-a = [1, 5, 7]
-b = [6, 4, 2]
+#a = [1, 5, 7]
+#b = [6, 4, 2]
+
+
+# take arrays from th CLI - quick & dirty
+# TODO: replace this with OPTPARSE
+a = ARGV[0].scan(/\d/).map(&:to_i)
+b = ARGV[1].scan(/\d/).map(&:to_i)
 
 puts "given #{a.inspect} and #{b.inspect} the sum is: "
 puts sum(a, b).inspect
