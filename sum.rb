@@ -26,20 +26,25 @@ def add_when_not_same_length(a, b)
     # input is good length sum the linked lists
     # TODO: add error handling for array elements which are non-numeric    
     # move shortest array from back if not equal
-    puts "a length #{a.length} b length #{b.length}"
+    
+    # offset depends on the difference in the lenght of the two arrays
+    #puts "a length #{a.length} b length #{b.length}"
     difference = a.length - b.length
     
     (b.length-1).downto(0) do |i|
-        puts "loop #{i} - adding a[#{i+difference}] + b[#{i}] => #{a[i+difference]} + #{b[i]} => #{a[i+difference] + b[i]}"
+        #puts "loop #{i} - adding a[#{i+difference}] + b[#{i}] => #{a[i+difference]} + #{b[i]} => #{a[i+difference] + b[i]}"
     
         result.push(a[i+difference] + b[i])
     end
+    #puts "current results are #{result.inspect}"
     
     # copy remainder of longer array
-    0.upto(a.length - b.length - 1) do |j|
-        puts "loop #{j} moving #{a[j]}"
+    (a.length - b.length-1).downto(0) do |j|
+        #puts "loop #{j} moving #{a[j]}"
         result.push(a[j])
     end
+    
+    #puts "current results are #{result.inspect}"
     
     result.reverse
 end
