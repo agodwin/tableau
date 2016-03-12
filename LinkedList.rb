@@ -11,14 +11,8 @@ class Node
    @value
    attr_accessor :value
    
-   def initialize
-       @value = 0
-       @next_node = nil
-       @prev_node = nil
-   end
-   
-   def initialise(i)
-       @value = i
+   def initialise(value)
+       @value = value
        @next_node = nil
        @prev_node = nil
    end
@@ -41,10 +35,12 @@ class LinkedList
         @size = 0
     end
     
-    def add(i)         
-        # special case - first node in the list
+    def add(i)    
+        puts "add #{i} to linked list"
+        
+        # special case - first node in the list        
         if (@head == nil) then
-            @head = Node.new i
+            @head = Node.new(i)
             @tail = @head
             @size = 1
             return @size
@@ -82,3 +78,10 @@ end
 ll = LinkedList.new
 
 puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+ll.add 4
+ll.add 2
+ll. add 7
+
+puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
