@@ -36,7 +36,7 @@ class LinkedList
     end
     
     def add(i)    
-        puts "add #{i} to linked list"
+        #puts "add #{i} to linked list"
         
         # special case - first node in the list        
         if (@head == nil) then
@@ -76,15 +76,15 @@ end
 
 
 
-ll = LinkedList.new
+#ll = LinkedList.new
 
-puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
-ll.add 4
-puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+#ll.add 4
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
-ll.add 2
-ll. add 7
+#ll.add 2
+#ll. add 7
 
-puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
