@@ -1,0 +1,84 @@
+# implement a linked list class in Ruby
+
+
+class Node
+   @next_node
+   attr_accessor :next_node
+
+   @prev_node   
+   attr_accessor :prev_node
+
+   @value
+   attr_accessor :value
+   
+   def initialize
+       @value = 0
+       @next_node = nil
+       @prev_node = nil
+   end
+   
+   def initialise(i)
+       @value = i
+       @next_node = nil
+       @prev_node = nil
+   end
+end
+
+
+class LinkedList
+    @head
+    attr_reader :head
+    
+    @last
+    attr_reader :tail
+    
+    @size
+    attr_reader :size
+    
+    def initialize
+        @head = nil
+        @last = nil
+        @size = 0
+    end
+    
+    def add(i)         
+        # special case - first node in the list
+        if (@head == nil) then
+            @head = Node.new i
+            @tail = @head
+            @size = 1
+            return @size
+        end
+        
+        # normal case - add to the end of a linked list
+        temp = @head
+        while temp.next_node != nil do
+            temp = temp.next_node
+        end
+        new_node = Node.new i
+        temp.next_node = new_node
+        new_node.prev_node = temp
+        @size += 1
+    end
+    
+    def to_s
+        # special case - linked list is empty
+        return "" if @head == nil
+        
+        temp = @head
+        result = ""
+        while temp.next_node != nil do
+            result += "#{temp.value}"
+            result += " -> " unless temp.next_node == nil
+            temp = temp.next_node
+        end 
+        
+        result
+    end
+end
+
+
+
+ll = LinkedList.new
+
+puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
