@@ -62,14 +62,15 @@ class LinkedList
         return "" if @head == nil
         
         temp = @head
-        result = ""
+        result = []        
         while temp.next_node != nil do
-            result += "#{temp.value}"
-            result += " -> " unless temp.next_node == nil
+            result += [temp.value]
             temp = temp.next_node
-        end 
+        end
+        # add the last value
+        result += [temp.value]
         
-        result
+        result.join("->").to_s
     end
 end
 
@@ -80,6 +81,8 @@ ll = LinkedList.new
 puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
 ll.add 4
+puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
 ll.add 2
 ll. add 7
 
