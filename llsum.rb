@@ -12,6 +12,20 @@ example output: [7]->[9]->[9]
 require './LinkedList.rb'
 
 
+def sum_when_same_length node_a, node_b
+    # sum the elements        
+    result = LinkedList.new
+    while node_a.next_node != nil do
+        result.append(node_a.value + node_b.value)
+        node_a = node_a.next_node
+        node_b = node_b.next_node
+    end
+    # got to sum one more value
+    result.append(node_a.value + node_b.value)
+
+    result
+end
+
 def sum_when_not_same_length a, b
     result = LinkedList.new
     
@@ -30,6 +44,7 @@ def sum_when_not_same_length a, b
     end
     
     # sum the remaining elements
+    #TODO figure out how to use simple_sum() here?
     t1 = current
     t2 = b.head
     while t1.next_node != nil do
@@ -54,16 +69,7 @@ def sum a, b
     else
         # a.size() == b.size()
         # sum the elements        
-        result = LinkedList.new
-        t1 = a.head
-        t2 = b.head
-        while t1.next_node != nil do
-            result.append(t1.value + t2.value)
-            t1 = t1.next_node
-            t2 = t2.next_node
-        end
-        # got to do ome more value
-        result.append(t1.value + t2.value)
+        result = sum_when_same_length(a.head, b.head)
     end
         
     result
