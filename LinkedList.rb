@@ -35,8 +35,8 @@ class LinkedList
         @size = 0
     end
     
-    def add(i)    
-        #puts "add #{i} to linked list"
+    def append(i)    
+        #puts "append #{i} to linked list"
         
         # special case - first node in the list        
         if (@head == nil) then
@@ -46,7 +46,7 @@ class LinkedList
             return @size
         end
         
-        # normal case - add to the end of a linked list
+        # normal case - append to the end of a linked list
         temp = @head
         while temp.next_node != nil do
             temp = temp.next_node
@@ -67,7 +67,7 @@ class LinkedList
             result += [temp.value]
             temp = temp.next_node
         end
-        # add the last value
+        # need to include the last value
         result += [temp.value]
         
         result.join("->").to_s
@@ -80,11 +80,11 @@ end
 
 #puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
-#ll.add 4
+#ll.append 4
 #puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
-#ll.add 2
-#ll. add 7
+#ll.append 2
+#ll. append 7
 
 #puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
 
