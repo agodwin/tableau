@@ -36,7 +36,7 @@ class LinkedList
     end
     
     def append(i)    
-        #puts "append #{i} to linked list"
+        #puts "append #{i} to the end of the linked list"
         
         # special case - first node in the list        
         if (@head == nil) then
@@ -54,6 +54,22 @@ class LinkedList
         new_node = Node.new i
         temp.next_node = new_node
         new_node.prev_node = temp
+        @size += 1
+    end
+    
+    def insert(i)
+        #puts "insert #{i} at the front of linked list"
+        
+        # special case - first node in the list        
+        if (@head == nil) then
+            return append(i)
+       end
+        
+        # normal case - insert at the head of a linked list
+        temp = Node.new i
+        temp.next_node = @head
+        @head.prev_node = temp
+        @head = temp
         @size += 1
     end
     
@@ -75,7 +91,7 @@ class LinkedList
 end
 
 
-
+#TODO: move testing into RSPEC 
 #ll = LinkedList.new
 
 #puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
@@ -87,4 +103,22 @@ end
 #ll. append 7
 
 #puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+
+#ll.insert 55
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+#ll.insert 65
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+#ll.append 30
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+#ll.append 40
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+#ll.insert 75
+#puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+
 
