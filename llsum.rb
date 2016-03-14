@@ -12,19 +12,40 @@ example output: [7]->[9]->[9]
 require './LinkedList.rb'
 
 
-
-def sum a, b
+def add_when_not_same_length a, b
     result = LinkedList.new
     
-    t1 = a.head
-    t2 = b.head
-    while t1.next_node != nil do
-        result.add(t1.value + t2.value)
-        t1 = t1.next_node
-        t2 = t2.next_node
+    # insure a is greater than b
+    if a.size() <= b.size() then
+        puts "ERROR: first arg must be longer than second arg"
+        return result
     end
-    # got to do ome more value
-    result.add(t1.value + t2.value)
+
+    result
+end
+
+def sum a, b
+    result = nil
+    
+    if a.size() > b.size() then
+        result = add_when_not_same_length(a, b)
+        
+    elsif b.size() > a.size() then
+        result = add_when_not_same_length(b, a)
+    else
+        # a.size() == b.size()
+        # sum the elements        
+        result = LinkedList.new
+        t1 = a.head
+        t2 = b.head
+        while t1.next_node != nil do
+            result.add(t1.value + t2.value)
+            t1 = t1.next_node
+            t2 = t2.next_node
+        end
+        # got to do ome more value
+        result.add(t1.value + t2.value)
+    end
         
     result
 end
