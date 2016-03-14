@@ -21,6 +21,25 @@ def sum_when_not_same_length a, b
         return result
     end
 
+    # copy element from longer list
+    difference = a.size() - b.size()
+    current = a.head
+    1.upto(difference) do 
+       result.append(current.value)
+       current = current.next_node
+    end
+    
+    # sum the remaining elements
+    t1 = current
+    t2 = b.head
+    while t1.next_node != nil do
+        result.append(t1.value + t2.value)
+        t1 = t1.next_node
+        t2 = t2.next_node
+    end
+    # got to do one more value
+    result.append(t1.value + t2.value)
+    
     result
 end
 
@@ -50,7 +69,8 @@ def sum a, b
     result
 end
 
-
+#TODO get linked list values from the CLI
+#TODO: move test code into an RSPEC
 a = LinkedList.new
 a.append 1
 a.append 5
@@ -66,4 +86,3 @@ puts "Linked List size is #{b.size} and contents are \"#{b.to_s()}\""
 
 c = sum(a, b)
 puts "Linked List size is #{c.size} and contents are \"#{c.to_s()}\""
-
