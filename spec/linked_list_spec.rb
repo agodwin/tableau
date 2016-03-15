@@ -91,4 +91,53 @@ RSpec.describe "LinkedList" do
         expect(temp.to_s()).to eql "4->5->6"  
     end
     
+    it "can only append an integer or another linked list" do
+        @ll.insert 6
+        @ll.insert 7
+        @ll.insert 8
+        expect(@ll.size).to eql 3        
+        expect(@ll.to_s()).to eql "8->7->6"
+        
+        @ll.append "not a linked list"
+
+        # original list is un-changed 
+        expect(@ll.size).to eql 3        
+        expect(@ll.to_s()).to eql "8->7->6"
+
+        @ll.append 3.1415
+
+        # original list is un-changed 
+        expect(@ll.size).to eql 3        
+        expect(@ll.to_s()).to eql "8->7->6"
+
+        @ll.append [1, 2, 3, 'a', 'b', 'c']
+
+        # original list is un-changed 
+        expect(@ll.size).to eql 3        
+        expect(@ll.to_s()).to eql "8->7->6"
+
+        @ll.append({:a => 1, :b => 2, :c => 3})
+
+        # original list is un-changed 
+        expect(@ll.size).to eql 3        
+        expect(@ll.to_s()).to eql "8->7->6"
+
+        # AS EXPECTED - original linked list still works
+        @ll.append 5
+        expect(@ll.size).to eql 4        
+        expect(@ll.to_s()).to eql "8->7->6->5"        
+ 
+        @ll.insert 9
+        expect(@ll.size).to eql 5        
+        expect(@ll.to_s()).to eql "9->8->7->6->5"
+
+        temp = LinkedList.new
+        temp.append 4
+        temp.append 3
+        temp.append 2
+        @ll.append temp
+        expect(@ll.size).to eql 8        
+        expect(@ll.to_s()).to eql "9->8->7->6->5->4->3->2"        
+    end
+    
 end
