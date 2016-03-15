@@ -23,6 +23,7 @@ def sum_when_same_length node_a, node_b
     # got to sum one more value
     result.append(node_a.value + node_b.value)
 
+    # return a linked list
     result
 end
 
@@ -44,17 +45,14 @@ def sum_when_not_same_length a, b
     end
     
     # sum the remaining elements
-    #TODO figure out how to use simple_sum() here?
+    # generate a new linked list with the sums
     t1 = current
     t2 = b.head
-    while t1.next_node != nil do
-        result.append(t1.value + t2.value)
-        t1 = t1.next_node
-        t2 = t2.next_node
-    end
-    # got to do one more value
-    result.append(t1.value + t2.value)
+    tmp_list = sum_when_same_length t1, t2    
+    # append new linked list to the end of the result
+    result.append tmp_list    
     
+    # return a linked list
     result
 end
 
@@ -72,6 +70,7 @@ def sum a, b
         result = sum_when_same_length(a.head, b.head)
     end
         
+    # return a linked list
     result
 end
 
