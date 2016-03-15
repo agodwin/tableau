@@ -35,7 +35,23 @@ class LinkedList
         @size = 0
     end
     
-    def append(i)    
+    def append(i)
+        # append depending on the argument type
+        
+        size = 0
+        if i.instance_of? Fixnum then
+            size = append_node i
+        elsif i.instance_of? LinkedList then
+            size = append_list i
+        else
+            puts "don't know how to append #{i.class} - NO CHANGE TO LIST"
+            size = @size
+        end
+        
+        size        
+    end
+    
+    def append_node(i)  
         #puts "append #{i} to the end of the linked list"
         
         # special case - first node in the list        
@@ -55,6 +71,18 @@ class LinkedList
         temp.next_node = new_node
         new_node.prev_node = temp
         @size += 1
+    end
+    
+    def append_list i        
+        temp = i.head
+        while temp.next_node != nil do
+            append_node(temp.value)
+            temp = temp.next_node
+        end
+        # one more value
+        append_node(temp.value)
+        
+        @size
     end
     
     def insert(i)
@@ -119,6 +147,23 @@ end
 
 #ll.insert 75
 #puts "Linked List size is #{ll.size} and contents are \"#{ll.to_s()}\""
+
+#a = LinkedList.new()
+#b = LinkedList.new()
+
+#a.append 1
+#a.append 2
+#a.append 3
+#puts "Linked List size is #{a.size} and contents are \"#{a.to_s()}\""
+
+#b.append 4
+#b.append 5
+#b.append 6
+#puts "Linked List size is #{b.size} and contents are \"#{b.to_s()}\""
+
+#a.append b
+#puts "Linked List size is #{a.size} and contents are \"#{a.to_s()}\""
+#puts "Linked List size is #{b.size} and contents are \"#{b.to_s()}\""
 
 
 
